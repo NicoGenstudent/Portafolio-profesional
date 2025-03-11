@@ -7,7 +7,7 @@ const app = express();
 
 
 app.use(cors(
-    {origin: 'http://localhost:3001'}
+    {origin: 'https://portfolio-backend.onrender.com'}
 ));
 app.use(express.json());
 
