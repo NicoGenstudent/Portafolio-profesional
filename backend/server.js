@@ -4,13 +4,7 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 const app = express();
-const PORT = process.env.PORT || 3001;
 
-console.log('Environment variables:', {
-    EMAIL_USERNAME: process.env.EMAIL_USERNAME,
-    EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
-    RECEIVING_EMAIL_ADDRESS: process.env.RECEIVING_EMAIL_ADDRESS,
-  });
 
 app.use(cors(
     {origin: 'http://localhost:5500'}
@@ -48,6 +42,9 @@ app.post('/send-email', async (req, res) => {
 });
 
 app.use(express.static('.'));
+
+
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
