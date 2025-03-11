@@ -24,7 +24,7 @@
         validateForm(formData);
 
         // Send data to the Node.js backend
-        const response = await fetch('http://localhost:3001/send-email', {
+        const response = await fetch('https://portafolio-profesional-u5zf.onrender.com/send-email', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
