@@ -47,6 +47,7 @@
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
       } catch (error) {
+        console.error('Error: ', error.message)
         errorMessage.textContent = error.message; // Display error message
         errorMessage.classList.add('d-block');
       } finally {

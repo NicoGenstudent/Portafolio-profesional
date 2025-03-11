@@ -6,8 +6,24 @@ const cors = require('cors');
 const app = express();
 
 
+const allowedOrigins = [
+  'http://localhost:5500', // For local development
+  'http://127.0.0.1:5500', // For local development (alternative localhost address)
+  'https://nicogenstudent.github.io/Portafolio-profesional', // For production
+  'https://nicogenstudent.github.io' // For testing with GitHub pages
+]
+
 app.use(cors(
-    {origin: 'https://nicogenstudent.github.io/Portafolio-profesional'}
+    {origin: function (origin, callback) {
+      console.log('Incoming Origin: ', origin);
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      }
+      else {
+        console.error(`Not allowed by CORS: ${origin}`);
+        callback(new Error(`Not allowed by CORS: ${origin}`));
+      }
+    }}
 ));
 app.use(express.json());
 
