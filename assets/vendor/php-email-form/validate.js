@@ -1,85 +1,70 @@
-/**
-* PHP Email Form Validation - v3.10
-* URL: https://bootstrapmade.com/php-email-form/
-* Author: BootstrapMade.com
-*/
 (function () {
   "use strict";
 
+  // Select all forms with the 'php-email-form' class
   let forms = document.querySelectorAll('.php-email-form');
 
-  forms.forEach( function(e) {
-    e.addEventListener('submit', function(event) {
+  forms.forEach(function (thisForm) {
+    thisForm.addEventListener('submit', async function (event) {
       event.preventDefault();
 
-      let thisForm = this;
+      // Get feedback elements
+      const loading = thisForm.querySelector('.loading');
+      const errorMessage = thisForm.querySelector('.error-message');
+      const sentMessage = thisForm.querySelector('.sent-message');
 
-      let action = thisForm.getAttribute('action');
-      let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
-      
-      if( ! action ) {
-        displayError(thisForm, 'The form action property is not set!');
-        return;
-      }
-      thisForm.querySelector('.loading').classList.add('d-block');
-      thisForm.querySelector('.error-message').classList.remove('d-block');
-      thisForm.querySelector('.sent-message').classList.remove('d-block');
+      // Reset feedback elements
+      loading.classList.add('d-block');
+      errorMessage.classList.remove('d-block');
+      sentMessage.classList.remove('d-block');
 
-      let formData = new FormData( thisForm );
+      try {
+        // Validate form fields
+        const formData = new FormData(thisForm);
+        validateForm(formData);
 
-      if ( recaptcha ) {
-        if(typeof grecaptcha !== "undefined" ) {
-          grecaptcha.ready(function() {
-            try {
-              grecaptcha.execute(recaptcha, {action: 'php_email_form_submit'})
-              .then(token => {
-                formData.set('recaptcha-response', token);
-                php_email_form_submit(thisForm, action, formData);
-              })
-            } catch(error) {
-              displayError(thisForm, error);
-            }
-          });
+        // Send data to the Node.js backend
+        const response = await fetch('http://localhost:3001/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: formData.get('name'),
+            email: formData.get('email'),
+            subject: formData.get('subject'),
+            message: formData.get('message'),
+          }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data.message === 'OK') {
+            sentMessage.classList.add('d-block'); // Show success message
+            thisForm.reset(); // Clear the form
+          } else {
+            throw new Error(data.error || 'Form submission failed.');
+          }
         } else {
-          displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
+          throw new Error(`HTTP error! Status: ${response.status}`);
         }
-      } else {
-        php_email_form_submit(thisForm, action, formData);
+      } catch (error) {
+        errorMessage.textContent = error.message; // Display error message
+        errorMessage.classList.add('d-block');
+      } finally {
+        loading.classList.remove('d-block'); // Hide loading spinner
       }
     });
   });
 
-  function php_email_form_submit(thisForm, action, formData) {
-    fetch(action, {
-      method: 'POST',
-      body: formData,
-      headers: {'X-Requested-With': 'XMLHttpRequest'}
-    })
-    .then(response => {
-      if( response.ok ) {
-        return response.text();
-      } else {
-        throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
+  // Form validation function
+  function validateForm(formData) {
+    const requiredFields = ['name', 'email', 'subject', 'message'];
+    for (const field of requiredFields) {
+      if (!formData.get(field)) {
+        throw new Error(`The ${field} field is required.`);
       }
-    })
-    .then(data => {
-      thisForm.querySelector('.loading').classList.remove('d-block');
-      if (data.trim() == 'OK') {
-        thisForm.querySelector('.sent-message').classList.add('d-block');
-        thisForm.reset(); 
-      } else {
-        throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
-      }
-    })
-    .catch((error) => {
-      displayError(thisForm, error);
-    });
+    }
+    if (!/\S+@\S+\.\S+/.test(formData.get('email'))) {
+      throw new Error('Please enter a valid email address.');
+    }
   }
-
-  function displayError(thisForm, error) {
-    thisForm.querySelector('.loading').classList.remove('d-block');
-    thisForm.querySelector('.error-message').innerHTML = error;
-    thisForm.querySelector('.error-message').classList.add('d-block');
-  }
-
 })();

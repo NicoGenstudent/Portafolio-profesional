@@ -3,3 +3,19 @@
 
 # Ignore Composer dependencies
 /vendor/
+
+# Node.js dependencies
+node_modules/
+
+# Build artifacts
+dist/
+logs/
+*.log
+
+# IDE/editor-specific files
+.vscode/
+.idea/
+
+# Temporary files
+.DS_Store
+Thumbs.db
