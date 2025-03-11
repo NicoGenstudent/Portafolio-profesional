@@ -7,7 +7,7 @@ const app = express();
 
 
 app.use(cors(
-    {origin: 'https://portfolio-backend.onrender.com'}
+    {origin: 'https://nicogenstudent.github.io/Portafolio-profesional'}
 ));
 app.use(express.json());
 
