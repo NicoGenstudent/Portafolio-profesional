@@ -68,20 +68,47 @@ const projectsData = [
   }, 
 
   {
-    id: 'carrot-drawing',
-    title: 'Carrot (One Piece) Fan Art',
-    pageTitleDescription: 'A digital drawing showcasing fan art of the character Carrot from One Piece.',
+    id: 'pokemon-guess-game',
+    title: 'Guess the Pokemon! game',
+    pageTitleDescription: 'A web-based game that selects a random Pokemon from the PokeAPI and challenges the user to guess its name.',
     images: [
-      { src: 'Images/Proyectos/Carrot.png', alt: 'Digital drawing of Carrot from One Piece in Sulong form' }
+        { src: 'Images/Proyectos/Pokemon-example.png', alt: 'Screenshot of the Guess the Pokemon game interface' }
     ],
-    category: 'Digital Art / Illustration',
-    client: 'Personal Artwork',
-    date: '[Add specific date, e.g., December 2023]',
+    category: 'Web Application',
+    client: 'Personal Project (JavaScript API Practice)',
+    date: 'May 2025',
+    projectUrl: 'https://nicogenstudent.github.io/Pokemon-API/',
+    urlText: 'Live Demo',
     description: `
-      <p>A personal digital illustration of Carrot from the One Piece series, created using Krita.</p>
-      <p><small><i>(This artwork is included temporarily while more coding projects are added to the portfolio.)</i></small></p>
+      <p><strong>Goal:</strong> To practice fetching and comparing data from a third-party <strong>API (PokeAPI)</strong> and build an interactive guessing game with complex feedback logic using asynchronous JavaScript and DOM manipulation.</p>
+      <p>In this game, players attempt to deduce a secret, randomly selected Pokémon by guessing other Pokémon and receiving feedback based on how their stats compare.</p>
+
+      <h6>Gameplay Loop:</h6>
+      <ol>
+        <li>A secret Pokémon is randomly selected (data fetched from PokeAPI).</li>
+        <li>The player guesses a Pokémon by typing its name.</li>
+        <li>The game fetches data for the guessed Pokémon from PokeAPI.</li>
+        <li>A feedback row is displayed, comparing the guessed Pokémon to the secret one across several attributes:
+            <ul>
+              <li><strong>Generation:</strong> Green for exact match; Red with arrow (▲ Up / ▼ Down) if the secret Pokémon's generation is higher or lower.</li>
+              <li><strong>Type 1 & Type 2:</strong> Green for exact match in the correct slot; Yellow if the secret Pokémon has the type but in the other slot; Red if the secret Pokémon doesn't have that type at all.</li>
+              <li><strong>Height & Weight:</strong> Green for exact match; Red with arrow (▲ Up / ▼ Down) indicating if the secret Pokémon is taller/heavier or shorter/lighter.</li>
+            </ul>
+        </li>
+        <li>The player uses the feedback from multiple guesses to deduce the secret Pokémon.</li>
+        <li>The game ends when the player guesses the correct Pokémon name.</li>
+      </ol>
+
+      <h6>Technologies Used:</h6>
+      <ul>
+        <li>HTML5 </li>
+        <li>CSS3 </li>
+        <li>JavaScript</li>
+        <li>Fetch API</li>
+        <li>PokeAPI</li>
+      </ul>
     ` 
-  }, 
+  },
 
   {
     id: 'doom-clone',
@@ -225,49 +252,6 @@ const projectsData = [
     description: `
       <p>A digital drawing study exploring the style associated with the album "Everywhere at the end of time with voices", created using Krita.</p>
       <p><small><i>(This artwork is included temporarily while more coding projects are added to the portfolio.)</i></small></p>
-    ` 
-  }, 
-
-  {
-    id: 'pokemon-guess-game',
-    title: 'Guess the Pokemon! game',
-    pageTitleDescription: 'A web-based game that selects a random Pokemon from the PokeAPI and challenges the user to guess its name.',
-    images: [
-        { src: 'Images/Proyectos/Pokemon-example.png', alt: 'Screenshot of the Guess the Pokemon game interface' }
-    ],
-    category: 'Web Application',
-    client: 'Personal Project (JavaScript API Practice)',
-    date: 'May 2025',
-    projectUrl: 'https://nicogenstudent.github.io/Pokemon-API/',
-    urlText: 'Live Demo',
-    description: `
-      <p><strong>Goal:</strong> To practice fetching and comparing data from a third-party <strong>API (PokeAPI)</strong> and build an interactive guessing game with complex feedback logic using asynchronous JavaScript and DOM manipulation.</p>
-      <p>In this game, players attempt to deduce a secret, randomly selected Pokémon by guessing other Pokémon and receiving feedback based on how their stats compare.</p>
-
-      <h6>Gameplay Loop:</h6>
-      <ol>
-        <li>A secret Pokémon is randomly selected (data fetched from PokeAPI).</li>
-        <li>The player guesses a Pokémon by typing its name.</li>
-        <li>The game fetches data for the guessed Pokémon from PokeAPI.</li>
-        <li>A feedback row is displayed, comparing the guessed Pokémon to the secret one across several attributes:
-            <ul>
-              <li><strong>Generation:</strong> Green for exact match; Red with arrow (▲ Up / ▼ Down) if the secret Pokémon's generation is higher or lower.</li>
-              <li><strong>Type 1 & Type 2:</strong> Green for exact match in the correct slot; Yellow if the secret Pokémon has the type but in the other slot; Red if the secret Pokémon doesn't have that type at all.</li>
-              <li><strong>Height & Weight:</strong> Green for exact match; Red with arrow (▲ Up / ▼ Down) indicating if the secret Pokémon is taller/heavier or shorter/lighter.</li>
-            </ul>
-        </li>
-        <li>The player uses the feedback from multiple guesses to deduce the secret Pokémon.</li>
-        <li>The game ends when the player guesses the correct Pokémon name.</li>
-      </ol>
-
-      <h6>Technologies Used:</h6>
-      <ul>
-        <li>HTML5 </li>
-        <li>CSS3 </li>
-        <li>JavaScript</li>
-        <li>Fetch API</li>
-        <li>PokeAPI</li>
-      </ul>
     ` 
   }
 ]; 

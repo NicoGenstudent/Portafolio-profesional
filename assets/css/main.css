@@ -1474,3 +1474,11 @@ section,
 .contact .php-email-form button[type=submit]:hover {
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
+
+#portfolio .portfolio-item .portfolio-image-wrapper {
+  display: block; 
+  height: 250px; 
+  overflow: hidden; 
+  position: relative; 
+}
+
