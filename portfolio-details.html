@@ -4,8 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <!-- Title will be updated by JavaScript -->
   <title>Portfolio Details</title>
-  <meta name="description" content="">
+  <meta name="description" content=""> <!-- Can be updated by JS if needed, or kept general -->
   <meta name="keywords" content="">
 
   <!-- Favicons -->
@@ -30,7 +31,6 @@
   <!-- =======================================================
   * Template Name: Personal
   * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
-  * Updated: Nov 04 2024 with Bootstrap v5.3.3
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
@@ -42,24 +42,21 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
         <h1 class="sitename">Portfolio</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
-        <ul>
+         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="resume.html">Resume</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li> <!-- Make sure this points back correctly -->
           <li><a href="contact.html">Contact</a></li>
           <li class="dropdown"><a href="#"><span>Language</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">English</a></li>
             </ul>
           </li>
-
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -75,8 +72,10 @@
         <div class="container">
           <div class="row d-flex justify-content-center text-center">
             <div class="col-lg-8">
-              <h1>Portfolio Details</h1>
-              <p class="mb-0">Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
+              <!-- ID added for dynamic update -->
+              <h1 id="project-page-title">Portfolio Details</h1>
+              <!-- ID added for dynamic update -->
+              <p class="mb-0" id="project-page-description">Loading project details...</p>
             </div>
           </div>
         </div>
@@ -85,7 +84,10 @@
         <div class="container">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li class="current">Portfolio Details</li>
+             <!-- Link back to the main portfolio page -->
+            <li><a href="portfolio.html">Portfolio</a></li>
+             <!-- ID added for dynamic update -->
+            <li class="current" id="breadcrumb-current">Project Details</li>
           </ol>
         </div>
       </nav>
@@ -99,7 +101,8 @@
         <div class="row gy-4">
 
           <div class="col-lg-8">
-            <div class="portfolio-details-slider swiper init-swiper">
+            <!-- REMOVED 'init-swiper' class to prevent auto-init -->
+            <div class="portfolio-details-slider swiper">
 
               <script type="application/json" class="swiper-config">
                 {
@@ -117,24 +120,9 @@
                 }
               </script>
 
-              <div class="swiper-wrapper align-items-center">
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/app-1.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/product-1.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/branding-1.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/books-1.jpg" alt="">
-                </div>
-
+              <!-- ID added for dynamic update. Placeholder slides removed. -->
+              <div class="swiper-wrapper align-items-center" id="portfolio-slider-wrapper">
+                <!-- Images will be loaded here by details-loader.js -->
               </div>
               <div class="swiper-pagination"></div>
             </div>
@@ -142,19 +130,24 @@
 
           <div class="col-lg-4">
             <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
-              <h3>Project information</h3>
-              <ul>
-                <li><strong>Category</strong>: Web design</li>
-                <li><strong>Client</strong>: ASU Company</li>
-                <li><strong>Project date</strong>: 01 March, 2020</li>
-                <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
+               <!-- ID added for dynamic update -->
+              <h3 id="project-info-title">Project Information</h3>
+              <!-- ID added for dynamic update -->
+              <ul id="project-info-list">
+                <!-- Info will be loaded here by details-loader.js -->
+                 <li><strong>Category</strong>: <span>Loading...</span></li>
+                <li><strong>Client</strong>: <span>Loading...</span></li>
+                <li><strong>Project date</strong>: <span>Loading...</span></li>
+                <li><strong>Project URL</strong>: <a href="#">Loading...</a></li>
               </ul>
             </div>
             <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
-              <h2>Exercitationem repudiandae officiis neque suscipit</h2>
-              <p>
-                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
-              </p>
+              <!-- ID added for dynamic update -->
+              <h2 id="project-description-title">Loading Project Title...</h2>
+              <!-- ID added for dynamic update -->
+              <div id="project-description-content">
+                <p>Loading project description...</p>
+              </div>
             </div>
           </div>
 
@@ -168,20 +161,17 @@
 
   <footer id="footer" class="footer dark-background">
     <div class="container">
-      <h3 class="sitename">Personal</h3>
+       <h3 class="sitename">Nicolas Sanchez</h3> <!-- Use Name -->
       <p>Full-stack developer in progress, passionate about coding and design.</p>
       <div class="social-links d-flex justify-content-center">
-        <a href="https://www.linkedin.com/in/nicolas-sanchez-a2b2521a2/"><i class="bi bi-linkedin"></i></a>
+        <a href="https://www.linkedin.com/in/nicolas-sanchez-a2b2521a2/" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
+        <!-- Add other social links here -->
       </div>
       <div class="container">
-        <div class="copyright">
-          <span>Copyright</span> <strong class="px-1 sitename">Personal</strong> <span>All Rights Reserved</span>
+         <div class="copyright">
+          © Copyright <strong><span class="px-1 sitename">Nicolas Sanchez</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you've purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
           Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>, edited by <strong>Nicolas Sanchez.</strong>
         </div>
       </div>
@@ -207,8 +197,18 @@
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
-  <!-- Main JS File -->
+  <!-- Project Data File (MUST be before details-loader.js) -->
+  <!-- Make sure the path is correct relative to this HTML file -->
+  <script src="assets/js/projects.js"></script>
+
+  <!-- Main JS File (Contains init Swiper, AOS etc. from template) -->
+  <!-- Loads AFTER vendor scripts but BEFORE our custom loader -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Custom Details Loader Script (MUST be AFTER projects.js) -->
+  <!-- Make sure the path is correct relative to this HTML file -->
+  <script src="assets/js/details-loader.js"></script>
+
 
 </body>
 
